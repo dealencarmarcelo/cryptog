@@ -7,7 +7,7 @@ from Crypto.Hash import SHA256
 
 def encrypt(key, filename):
     chunksize = 64*1024
-    outputFile = "(encrypted)"+filename
+    outputFile = "Crypted"+filename
     fileSize = str(os.path.getsize(filename)).zfill(16)
     IV = ''
 
@@ -34,7 +34,7 @@ def encrypt(key, filename):
 
 def decrypt(key, filename):
         chunksize = 64*1024
-        outputFile = filename[11:]
+        outputFile = filename[7:]
 
         with open(filename, 'rb') as infile:
                 filesize = long(infile.read(16))
@@ -61,7 +61,7 @@ def Main():
 
     option = raw_input("\n O que deseja fazer a seguir? \n (E) Encriptar \n (D)Decriptar \n (0) Sair \n")
     while(option != '0'):
-            if option == 'E':
+            if option == 'E' or option == 'e':
                 print("Escolha o arquivo para ser criptografado")
                 try:
                     root = Tkinter.Tk()
@@ -79,9 +79,9 @@ def Main():
                         print("Done!")
                         Main()
                 except AttributeError:
-                    print "\nNada foi selecionado"
+                    print "\nNada foi selecionado!"
                     Main()
-            elif option == 'D':
+            elif option == 'D' or option == 'd':
                 print("Escolha o arquivo para ser decriptografado")
                 try:
                     root = Tkinter.Tk()
@@ -99,7 +99,7 @@ def Main():
                         print("Done!")
                         Main()
                 except AttributeError:
-                    print "\nNada foi selecionado"
+                    print "\nNada foi selecionado!"
                     Main()
             else:
                 option = raw_input("O que deseja fazer a seguir? \n (1) Encriptar \n (2)Decriptar \n (0) Sair\n")
